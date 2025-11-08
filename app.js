@@ -80,8 +80,60 @@ if (mobileMenuBtn && navLinksElement) {
     });
 }
 
-// Asegurar que los textos sean visibles al cargar
+// Sistema de Traducción
+let currentLang = localStorage.getItem('cv-lang') || 'es';
+
+function getNestedTranslation(obj, path) {
+    return path.split('.').reduce((o, p) => o && o[p], obj);
+}
+
+function translatePage(lang) {
+    currentLang = lang;
+    localStorage.setItem('cv-lang', lang);
+    
+    const t = translations[lang];
+    if (!t) return;
+    
+    // Actualizar atributo lang del HTML
+    document.documentElement.lang = lang;
+    
+    // Traducir todos los elementos con data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const translation = getNestedTranslation(t, key);
+        
+        if (translation) {
+            if (element.hasAttribute('data-translate-html')) {
+                element.innerHTML = translation;
+            } else {
+                element.textContent = translation;
+            }
+        }
+    });
+    
+    // Actualizar botones de idioma
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// Inicializar traducción al cargar
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar idioma guardado
+    translatePage(currentLang);
+    
+    // Event listeners para botones de idioma
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+    
     // Forzar visibilidad de elementos con fade-in
     setTimeout(() => {
         document.querySelectorAll('.fade-in').forEach(el => {

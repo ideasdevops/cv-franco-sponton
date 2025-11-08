@@ -123,6 +123,38 @@ section span {
     cursor: pointer;
 }
 
+/* Language Selector */
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--bg-white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 45px;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: var(--gold);
+    color: var(--primary);
+    border-color: var(--gold);
+}
+
 /* Hero Section */
 .hero {
     min-height: calc(100vh - 80px);
@@ -433,7 +465,7 @@ section#education {
 }
 
 .project-header {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    background: var(--primary);
     padding: 1.5rem;
     color: var(--bg-white);
 }
@@ -695,6 +727,16 @@ footer p {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+    }
+    
+    .language-selector {
+        margin-right: 1rem;
+    }
+    
+    .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 40px;
     }
 
     .mobile-menu-btn {

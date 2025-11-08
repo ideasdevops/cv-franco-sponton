@@ -9,21 +9,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo">Franco Sponton</a>
+            <a href="#home" class="logo" data-translate="hero.name">Franco Sponton</a>
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Sobre Mí</a></li>
-                <li><a href="#experience">Experiencia</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#clients">Clientes</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#home" data-translate="nav.home">Inicio</a></li>
+                <li><a href="#about" data-translate="nav.about">Sobre Mí</a></li>
+                <li><a href="#experience" data-translate="nav.experience">Experiencia</a></li>
+                <li><a href="#projects" data-translate="nav.projects">Proyectos</a></li>
+                <li><a href="#skills" data-translate="nav.skills">Habilidades</a></li>
+                <li><a href="#clients" data-translate="nav.clients">Clientes</a></li>
+                <li><a href="#contact" data-translate="nav.contact">Contacto</a></li>
             </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="pt">PT</button>
+            </div>
             <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
@@ -31,18 +37,18 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Franco Sponton</h1>
-            <p class="subtitle">Desarrollador Full Stack & DevOps</p>
-            <p class="subtitle">Especialista en Automatización e IA Colaborativa</p>
-            <p class="location">📍 Mendoza, Argentina</p>
+            <h1 data-translate="hero.name">Franco Sponton</h1>
+            <p class="subtitle" data-translate="hero.title">Desarrollador Full Stack & DevOps</p>
+            <p class="subtitle" data-translate="hero.subtitle">Especialista en Automatización e IA Colaborativa</p>
+            <p class="location" data-translate="hero.location">📍 Mendoza, Argentina</p>
             <div class="hero-contact">
                 <a href="mailto:devops@ideasdevops.com">📧 devops@ideasdevops.com</a>
                 <a href="tel:+5492613151000">📱 +54 9 261 315-1000</a>
                 <a href="https://www.ideasdevops.com" target="_blank">🌐 ideasdevops.com</a>
             </div>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
-                <a href="#contact" class="btn btn-outline">Contactar</a>
+                <a href="#projects" class="btn btn-primary" data-translate="hero.btnProjects">Ver Proyectos</a>
+                <a href="#contact" class="btn btn-outline" data-translate="hero.btnContact">Contactar</a>
             </div>
         </div>
         <div class="scroll-indicator"></div>
@@ -50,11 +56,11 @@
 
     <!-- About Section -->
     <section id="about" class="fade-in">
-        <h2 class="section-title">Sobre Mí</h2>
-        <p class="section-subtitle">16 años transformando ideas en soluciones tecnológicas innovadoras</p>
+        <h2 class="section-title" data-translate="about.title">Sobre Mí</h2>
+        <p class="section-subtitle" data-translate="about.subtitle">16 años transformando ideas en soluciones tecnológicas innovadoras</p>
         
         <div class="profile-card">
-            <p>
+            <p data-translate="about.text1" data-translate-html="true">
                 Profesional con <strong>16 años de experiencia</strong> iniciando en diseño gráfico publicitario y 
                 especialización en UI/UX, evolucionando hacia el desarrollo full stack y DevOps. Formación técnica 
                 en diseño gráfico publicitario, seguida de 2 años de especialización en diseño UI/UX, complementada 
@@ -62,13 +68,13 @@
                 impartir clases y conferencias sobre Marketing, Desarrollo e Inteligencia Artificial en instituciones 
                 de prestigio como ITU San Rafael, Ministerio de Desarrollo de Mendoza y Polo TIC Mendoza.
             </p>
-            <p>
+            <p data-translate="about.text2" data-translate-html="true">
                 Especializado en la <strong>colaboración con IA</strong> para el desarrollo de aplicaciones completas, 
                 combinando conocimientos sólidos en diseño, tecnologías web, scripting, contenedores Docker y 
                 resolución de problemas complejos. Experto en <strong>desplegar sistemas complejos en entornos Docker</strong>, 
                 automatizar procesos, depurar aplicaciones y desarrollar soluciones completas desde cero.
             </p>
-            <p>
+            <p data-translate="about.text3" data-translate-html="true">
                 He desarrollado e implementado sistemas ERP completos, plataformas de comunicación masiva, 
                 extractores de datos, sistemas de trazabilidad y aplicaciones web complejas para empresas líderes 
                 en Argentina, mejorando significativamente sus procesos operativos y medios de comunicación. Mi 
@@ -80,54 +86,54 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">16+</div>
-                <div class="stat-label">Años de Experiencia</div>
+                <div class="stat-label" data-translate="about.stats.years">Años de Experiencia</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Sistemas Completos</div>
+                <div class="stat-number">6+</div>
+                <div class="stat-label" data-translate="about.stats.companies">Empresas que Confían en Mí</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">100K+</div>
-                <div class="stat-label">Mensajes/Mes Procesados</div>
+                <div class="stat-number">3</div>
+                <div class="stat-label" data-translate="about.stats.institutions">Instituciones donde Enseño</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">40%</div>
-                <div class="stat-label">Mejora de Eficiencia</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label" data-translate="about.stats.commitment">Comprometido con la Excelencia</div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="fade-in">
-        <h2 class="section-title">Experiencia Profesional</h2>
-        <p class="section-subtitle">Una trayectoria de evolución constante y crecimiento profesional</p>
+        <h2 class="section-title" data-translate="experience.title">Experiencia Profesional</h2>
+        <p class="section-subtitle" data-translate="experience.subtitle">Una trayectoria de evolución constante y crecimiento profesional</p>
 
         <div class="timeline">
             <div class="timeline-item">
                 <div class="card">
-                    <div class="timeline-date">2009 - Presente</div>
-                    <h3>Desarrollador Full Stack & DevOps</h3>
-                    <h4>ideas DevOps</h4>
-                    <p><strong>Evolución Profesional:</strong></p>
+                    <div class="timeline-date" data-translate="experience.period">2009 - Presente</div>
+                    <h3 data-translate="experience.position">Desarrollador Full Stack & DevOps</h3>
+                    <h4 data-translate="experience.company">ideas DevOps</h4>
+                    <p><strong data-translate="experience.evolution">Evolución Profesional:</strong></p>
                     <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 2;">
-                        <li><strong>2009-2015:</strong> Especialización en diseño web y marketing online, desarrollando 
+                        <li data-translate="experience.evolution1" data-translate-html="true"><strong>2009-2015:</strong> Especialización en diseño web y marketing online, desarrollando 
                             sitios web responsivos, campañas de marketing digital y optimización SEO.</li>
-                        <li><strong>2015-2020:</strong> Transición hacia desarrollo full stack, implementando sistemas 
+                        <li data-translate="experience.evolution2" data-translate-html="true"><strong>2015-2020:</strong> Transición hacia desarrollo full stack, implementando sistemas 
                             web complejos con integraciones de APIs, bases de datos y automatizaciones.</li>
-                        <li><strong>2020-Presente:</strong> Especialización en desarrollo de sistemas empresariales, 
+                        <li data-translate="experience.evolution3" data-translate-html="true"><strong>2020-Presente:</strong> Especialización en desarrollo de sistemas empresariales, 
                             DevOps, contenedorización Docker y colaboración con IA para desarrollo acelerado.</li>
                     </ul>
-                    <p style="margin-top: 1rem;"><strong>Logros Principales:</strong></p>
+                    <p style="margin-top: 1rem;"><strong data-translate="experience.achievements">Logros Principales:</strong></p>
                     <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 2;">
-                        <li>Desarrollo e implementación de <strong>más de 15 sistemas completos</strong> en producción 
+                        <li data-translate="experience.achievement1" data-translate-html="true">Desarrollo e implementación de <strong>más de 15 sistemas completos</strong> en producción 
                             para empresas de diversos sectores (energía, seguros, movilidad, agro, retail).</li>
-                        <li>Arquitectura y despliegue de sistemas complejos en <strong>entornos Docker</strong> con 
+                        <li data-translate="experience.achievement2" data-translate-html="true">Arquitectura y despliegue de sistemas complejos en <strong>entornos Docker</strong> con 
                             alta disponibilidad y escalabilidad.</li>
-                        <li>Automatización de procesos críticos que han mejorado la eficiencia operativa de clientes 
+                        <li data-translate="experience.achievement3" data-translate-html="true">Automatización de procesos críticos que han mejorado la eficiencia operativa de clientes 
                             en más del 40%.</li>
-                        <li>Implementación de sistemas de comunicación masiva procesando <strong>más de 100,000 mensajes</strong> 
+                        <li data-translate="experience.achievement4" data-translate-html="true">Implementación de sistemas de comunicación masiva procesando <strong>más de 100,000 mensajes</strong> 
                             mensuales.</li>
-                        <li>Desarrollo de sistemas ERP completos con módulos de facturación electrónica, trazabilidad 
+                        <li data-translate="experience.achievement5" data-translate-html="true">Desarrollo de sistemas ERP completos con módulos de facturación electrónica, trazabilidad 
                             y gestión de inventario multi-almacén.</li>
                     </ul>
                 </div>
@@ -137,14 +143,14 @@
 
     <!-- Projects Section -->
     <section id="projects" class="fade-in">
-        <h2 class="section-title">Proyectos Destacados</h2>
-        <p class="section-subtitle">Soluciones innovadoras que transforman negocios</p>
+        <h2 class="section-title" data-translate="projects.title">Proyectos Destacados</h2>
+        <p class="section-subtitle" data-translate="projects.subtitle">Soluciones innovadoras que transforman negocios</p>
 
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h4>Sendera v2</h4>
-                    <p>Sistema de Envío Masivo WhatsApp</p>
+                    <h4 data-translate="projects.sendera.name">Sendera v2</h4>
+                    <p data-translate="projects.sendera.desc">Sistema de Envío Masivo WhatsApp</p>
                 </div>
                 <div class="project-body">
                     <div class="tech-tags">
@@ -154,15 +160,15 @@
                         <span class="tech-tag">Evolution API</span>
                         <span class="tech-tag">Docker</span>
                     </div>
-                    <p>Sistema completo de gestión y envío masivo de mensajes WhatsApp con integración de bases de datos, 
+                    <p data-translate="projects.sendera.text">Sistema completo de gestión y envío masivo de mensajes WhatsApp con integración de bases de datos, 
                         gestión de contactos, plantillas, listas de envío, reportes y analytics.</p>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h4>TrazaIA ERP</h4>
-                    <p>Sistema de Trazabilidad de Insumos Agrarios</p>
+                    <h4 data-translate="projects.trazaia.name">TrazaIA ERP</h4>
+                    <p data-translate="projects.trazaia.desc">Sistema de Trazabilidad de Insumos Agrarios</p>
                 </div>
                 <div class="project-body">
                     <div class="tech-tags">
@@ -171,15 +177,15 @@
                         <span class="tech-tag">ARCA/AFIP</span>
                         <span class="tech-tag">Multi-almacén</span>
                     </div>
-                    <p>Sistema ERP completo para gestión de insumos agrícolas con trazabilidad integrada, control de lotes, 
+                    <p data-translate="projects.trazaia.text">Sistema ERP completo para gestión de insumos agrícolas con trazabilidad integrada, control de lotes, 
                         integración con SENASA y facturación electrónica.</p>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h4>Luber ERP</h4>
-                    <p>Sistema de Gestión para Lubrocentros</p>
+                    <h4 data-translate="projects.luber.name">Luber ERP</h4>
+                    <p data-translate="projects.luber.desc">Sistema de Gestión para Lubrocentros</p>
                 </div>
                 <div class="project-body">
                     <div class="tech-tags">
@@ -188,15 +194,15 @@
                         <span class="tech-tag">WhatsApp API</span>
                         <span class="tech-tag">PDF Generation</span>
                     </div>
-                    <p>Sistema ERP completo para gestión integral de lubrocentros con módulos de facturación, inventario, 
+                    <p data-translate="projects.luber.text">Sistema ERP completo para gestión integral de lubrocentros con módulos de facturación, inventario, 
                         clientes, vehículos y servicios.</p>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h4>Ventura</h4>
-                    <p>Plataforma de Gestión de Viajes Turísticos</p>
+                    <h4 data-translate="projects.ventura.name">Ventura</h4>
+                    <p data-translate="projects.ventura.desc">Plataforma de Gestión de Viajes Turísticos</p>
                 </div>
                 <div class="project-body">
                     <div class="tech-tags">
@@ -205,15 +211,15 @@
                         <span class="tech-tag">MongoDB</span>
                         <span class="tech-tag">Evolution API</span>
                     </div>
-                    <p>Plataforma completa para agencias de viajes con gestión de viajes emisivos y receptivos, CRM de clientes, 
+                    <p data-translate="projects.ventura.text">Plataforma completa para agencias de viajes con gestión de viajes emisivos y receptivos, CRM de clientes, 
                         sistema de facturación y comunicación automatizada.</p>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h4>Mailsink-shell</h4>
-                    <p>Sistema Web de Migración de Correos</p>
+                    <h4 data-translate="projects.mailsink.name">Mailsink-shell</h4>
+                    <p data-translate="projects.mailsink.desc">Sistema Web de Migración de Correos</p>
                 </div>
                 <div class="project-body">
                     <div class="tech-tags">
@@ -222,29 +228,29 @@
                         <span class="tech-tag">WebSocket</span>
                         <span class="tech-tag">PayPal</span>
                     </div>
-                    <p>Sistema web completo para migración de correos electrónicos entre cualquier tipo de cuentas usando 
+                    <p data-translate="projects.mailsink.text">Sistema web completo para migración de correos electrónicos entre cualquier tipo de cuentas usando 
                         interfaz web moderna con sistema de suscripciones.</p>
                 </div>
             </div>
         </div>
 
         <div class="card" style="margin-top: 2rem;">
-            <h3>Implementaciones y Gestión de Sistemas Open Source</h3>
+            <h3 data-translate="projects.opensource.title">Implementaciones y Gestión de Sistemas Open Source</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
                 <div>
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">ERP & Gestión</h4>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-translate="projects.opensource.erp">ERP & Gestión</h4>
                     <p style="color: var(--text-secondary); font-size: 0.95rem;">Odoo, Typebot</p>
                 </div>
                 <div>
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Automatización</h4>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-translate="projects.opensource.automation">Automatización</h4>
                     <p style="color: var(--text-secondary); font-size: 0.95rem;">n8n, Chatwoot, Evolution API</p>
                 </div>
                 <div>
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">E-commerce & CMS</h4>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-translate="projects.opensource.ecommerce">E-commerce & CMS</h4>
                     <p style="color: var(--text-secondary); font-size: 0.95rem;">WordPress, PrestaShop</p>
                 </div>
                 <div>
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Paneles de Control</h4>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-translate="projects.opensource.panels">Paneles de Control</h4>
                     <p style="color: var(--text-secondary); font-size: 0.95rem;">EasyPanel, CloudPanel, aaPanel, cPanel</p>
                 </div>
             </div>
@@ -253,12 +259,12 @@
 
     <!-- Skills Section -->
     <section id="skills" class="fade-in">
-        <h2 class="section-title">Habilidades Técnicas</h2>
-        <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+        <h2 class="section-title" data-translate="skills.title">Habilidades Técnicas</h2>
+        <p class="section-subtitle" data-translate="skills.subtitle">Tecnologías y herramientas que domino</p>
 
         <div class="skills-grid">
             <div class="skill-card">
-                <h4>Lenguajes & Frameworks</h4>
+                <h4 data-translate="skills.languages">Lenguajes & Frameworks</h4>
                 <ul>
                     <li>JavaScript (ES6+)</li>
                     <li>Node.js & Express.js</li>
@@ -270,7 +276,7 @@
             </div>
 
             <div class="skill-card">
-                <h4>Bases de Datos</h4>
+                <h4 data-translate="skills.databases">Bases de Datos</h4>
                 <ul>
                     <li>PostgreSQL</li>
                     <li>SQLite</li>
@@ -282,7 +288,7 @@
             </div>
 
             <div class="skill-card">
-                <h4>DevOps & Infraestructura</h4>
+                <h4 data-translate="skills.devops">DevOps & Infraestructura</h4>
                 <ul>
                     <li>Docker & Docker Compose</li>
                     <li>Nginx (proxy reverso)</li>
@@ -294,7 +300,7 @@
             </div>
 
             <div class="skill-card">
-                <h4>Diseño & UI/UX</h4>
+                <h4 data-translate="skills.design">Diseño & UI/UX</h4>
                 <ul>
                     <li>Diseño Gráfico Publicitario</li>
                     <li>Diseño de Interfaces (UI)</li>
@@ -306,7 +312,7 @@
             </div>
 
             <div class="skill-card">
-                <h4>Integraciones & APIs</h4>
+                <h4 data-translate="skills.integrations">Integraciones & APIs</h4>
                 <ul>
                     <li>Evolution API (WhatsApp)</li>
                     <li>ARCA/AFIP</li>
@@ -318,7 +324,7 @@
             </div>
 
             <div class="skill-card">
-                <h4>Herramientas & Metodologías</h4>
+                <h4 data-translate="skills.tools">Herramientas & Metodologías</h4>
                 <ul>
                     <li>Testing & Depuración</li>
                     <li>Control de versiones (Git)</li>
@@ -333,48 +339,48 @@
 
     <!-- Clients Section -->
     <section id="clients" class="fade-in">
-        <h2 class="section-title">Clientes & Empresas</h2>
-        <p class="section-subtitle">Empresas líderes que confían en mis servicios</p>
+        <h2 class="section-title" data-translate="clients.title">Clientes & Empresas</h2>
+        <p class="section-subtitle" data-translate="clients.subtitle">Empresas líderes que confían en mis servicios</p>
 
         <div class="clients-grid">
             <div class="client-card">
                 <h4>Taker SA</h4>
-                <p>Desarrollo e implementación de sistemas de gestión y comunicación masiva</p>
+                <p data-translate="clients.taker">Desarrollo e implementación de sistemas de gestión y comunicación masiva</p>
             </div>
             <div class="client-card">
                 <h4>Oeste Argentino SA</h4>
-                <p>Implementación de sistemas de gestión y comunicación</p>
+                <p data-translate="clients.oeste">Implementación de sistemas de gestión y comunicación</p>
             </div>
             <div class="client-card">
                 <h4>Sumpetrol SA</h4>
-                <p>Desarrollo de sistemas especializados para el sector energético</p>
+                <p data-translate="clients.sumpetrol">Desarrollo de sistemas especializados para el sector energético</p>
             </div>
             <div class="client-card">
                 <h4>Del Campo Seguros</h4>
-                <p>Implementación de sistemas de gestión y comunicación</p>
+                <p data-translate="clients.delcampo">Implementación de sistemas de gestión y comunicación</p>
             </div>
             <div class="client-card">
                 <h4>Soluciones de Movilidad SRL</h4>
-                <p>Desarrollo de sistemas especializados en gestión de movilidad</p>
+                <p data-translate="clients.movilidad">Desarrollo de sistemas especializados en gestión de movilidad</p>
             </div>
             <div class="client-card">
                 <h4>SMDA SaS</h4>
-                <p>Implementación de sistemas de gestión empresarial</p>
+                <p data-translate="clients.smda">Implementación de sistemas de gestión empresarial</p>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
     <section id="education" class="fade-in">
-        <h2 class="section-title">Formación Académica</h2>
-        <p class="section-subtitle">Base sólida y aprendizaje continuo</p>
+        <h2 class="section-title" data-translate="education.title">Formación Académica</h2>
+        <p class="section-subtitle" data-translate="education.subtitle">Base sólida y aprendizaje continuo</p>
 
         <div class="timeline">
             <div class="timeline-item">
                 <div class="card">
-                    <div class="timeline-date">Finalizada</div>
-                    <h3>Tecnicatura en Diseño Gráfico Publicitario</h3>
-                    <p>Formación técnica completa en diseño gráfico publicitario, proporcionando una base sólida en 
+                    <div class="timeline-date" data-translate="education.design.date">Finalizada</div>
+                    <h3 data-translate="education.design.title">Tecnicatura en Diseño Gráfico Publicitario</h3>
+                    <p data-translate="education.design.text">Formación técnica completa en diseño gráfico publicitario, proporcionando una base sólida en 
                     comunicación visual, composición, tipografía, identidad corporativa y diseño para medios impresos 
                     y digitales.</p>
                 </div>
@@ -382,27 +388,27 @@
 
             <div class="timeline-item">
                 <div class="card">
-                    <div class="timeline-date">2 años de estudios</div>
-                    <h3>Diseño UI/UX - Especialización</h3>
-                    <p>Formación especializada en diseño de interfaces de usuario (UI) y experiencia de usuario (UX), 
+                    <div class="timeline-date" data-translate="education.uiux.date">2 años de estudios</div>
+                    <h3 data-translate="education.uiux.title">Diseño UI/UX - Especialización</h3>
+                    <p data-translate="education.uiux.text">Formación especializada en diseño de interfaces de usuario (UI) y experiencia de usuario (UX), 
                     enfocada en la creación de productos digitales intuitivos, atractivos y funcionales.</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="card">
-                    <div class="timeline-date">UTN Chaco</div>
-                    <h3>Certificación en Testing de Software</h3>
-                    <p>Certificación profesional en testing de software, validando habilidades en pruebas de software, 
+                    <div class="timeline-date" data-translate="education.testing.date">UTN Chaco</div>
+                    <h3 data-translate="education.testing.title">Certificación en Testing de Software</h3>
+                    <p data-translate="education.testing.text">Certificación profesional en testing de software, validando habilidades en pruebas de software, 
                     aseguramiento de calidad, metodologías de testing y gestión de defectos.</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="card">
-                    <div class="timeline-date">Invitado como docente</div>
-                    <h3>Docencia & Conferencias</h3>
-                    <p>Reconocido como experto e invitado a impartir clases y conferencias sobre Marketing, Desarrollo 
+                    <div class="timeline-date" data-translate="education.teaching.date">Invitado como docente</div>
+                    <h3 data-translate="education.teaching.title">Docencia & Conferencias</h3>
+                    <p data-translate="education.teaching.text">Reconocido como experto e invitado a impartir clases y conferencias sobre Marketing, Desarrollo 
                     e Inteligencia Artificial en:</p>
                     <ul style="margin-left: 1.5rem; margin-top: 1rem;">
                         <li><strong>ITU San Rafael</strong></li>
@@ -417,8 +423,8 @@
     <!-- Contact Section -->
     <section id="contact" class="fade-in">
         <div class="cta-section">
-            <h2 class="section-title" style="color: var(--bg-white);">¿Trabajamos Juntos?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            <h2 class="section-title" style="color: var(--bg-white);" data-translate="contact.title">¿Trabajamos Juntos?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;" data-translate="contact.text">
                 Estoy disponible para nuevos proyectos y colaboraciones. 
                 Hablemos sobre cómo puedo ayudar a transformar tus ideas en realidad.
             </p>
@@ -428,15 +434,15 @@
                 <a href="https://www.ideasdevops.com" target="_blank">🌐 ideasdevops.com</a>
             </div>
             <div class="cta-buttons">
-                <a href="mailto:devops@ideasdevops.com" class="btn btn-primary">Enviar Email</a>
-                <a href="https://www.ideasdevops.com" target="_blank" class="btn btn-outline">Visitar Web</a>
+                <a href="mailto:devops@ideasdevops.com" class="btn btn-primary" data-translate="contact.btnEmail">Enviar Email</a>
+                <a href="https://www.ideasdevops.com" target="_blank" class="btn btn-outline" data-translate="contact.btnWeb">Visitar Web</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Franco Sponton - ideas DevOps. Todos los derechos reservados.</p>
+        <p data-translate="footer">&copy; 2025 Franco Sponton - ideas DevOps. Todos los derechos reservados.</p>
     </footer>
 
     <script src="app.js"></script>

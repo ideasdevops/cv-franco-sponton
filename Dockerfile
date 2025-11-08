@@ -12,6 +12,7 @@ LABEL description="CV Profesional Online - Franco Sponton"
 COPY index.html /usr/share/nginx/html/
 COPY style.css /usr/share/nginx/html/
 COPY app.js /usr/share/nginx/html/
+COPY translations.js /usr/share/nginx/html/
 
 # Configuración de nginx para SPA (opcional, para rutas con hash)
 RUN echo 'server { \
