@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  cv-franco:
+    build: .
+    container_name: cv-franco-online
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cv.rule=Host(`cv.ideasdevops.com`)"
+      - "traefik.http.routers.cv.entrypoints=web"
+      - "traefik.http.routers.cv.entrypoints=websecure"
+      - "traefik.http.routers.cv.tls.certresolver=letsencrypt"
+

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franco Sponton | Desarrollador Full Stack & DevOps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1f3a;
+            --primary-dark: #0f1325;
+            --secondary: #2d3561;
+            --accent: #4f46e5;
+            --accent-light: #6366f1;
+            --gold: #d4af37;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 80px);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            margin-bottom: 2rem;
+            border-radius: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--bg-white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero .location {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-contact {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-contact a {
+            color: var(--bg-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .hero-contact a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--bg-white);
+            opacity: 0.6;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            background: var(--bg-white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        section#about,
+        section#projects,
+        section#clients,
+        section#contact {
+            background: var(--bg-white);
+        }
+
+        section#experience,
+        section#skills,
+        section#education {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Profile Section */
+        .profile-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--gold);
+        }
+
+        .skill-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .skill-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            padding: 1.5rem;
+            color: var(--bg-white);
+        }
+
+        .project-header h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-white);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Clients Grid */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .client-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .client-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .client-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-section h2 {
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #c9a52f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--bg-white);
+            border: 2px solid var(--bg-white);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Franco Sponton</a>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#clients">Clientes</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Franco Sponton</h1>
+            <p class="subtitle">Desarrollador Full Stack & DevOps</p>
+            <p class="subtitle">Especialista en Automatización e IA Colaborativa</p>
+            <p class="location">📍 Mendoza, Argentina</p>
+            <div class="hero-contact">
+                <a href="mailto:devops@ideasdevops.com">📧 devops@ideasdevops.com</a>
+                <a href="tel:+5492613151000">📱 +54 9 261 315-1000</a>
+                <a href="https://www.ideasdevops.com" target="_blank">🌐 ideasdevops.com</a>
+            </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+                <a href="#contact" class="btn btn-outline">Contactar</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">Sobre Mí</h2>
+        <p class="section-subtitle">16 años transformando ideas en soluciones tecnológicas innovadoras</p>
+        
+        <div class="profile-card">
+            <p>
+                Profesional con <strong>16 años de experiencia</strong> iniciando en diseño gráfico publicitario y 
+                especialización en UI/UX, evolucionando hacia el desarrollo full stack y DevOps. Formación técnica 
+                en diseño gráfico publicitario, seguida de 2 años de especialización en diseño UI/UX, complementada 
+                con certificaciones en testing de software (UTN Chaco). Reconocido como experto e invitado a 
+                impartir clases y conferencias sobre Marketing, Desarrollo e Inteligencia Artificial en instituciones 
+                de prestigio como ITU San Rafael, Ministerio de Desarrollo de Mendoza y Polo TIC Mendoza.
+            </p>
+            <p>
+                Especializado en la <strong>colaboración con IA</strong> para el desarrollo de aplicaciones completas, 
+                combinando conocimientos sólidos en diseño, tecnologías web, scripting, contenedores Docker y 
+                resolución de problemas complejos. Experto en <strong>desplegar sistemas complejos en entornos Docker</strong>, 
+                automatizar procesos, depurar aplicaciones y desarrollar soluciones completas desde cero.
+            </p>
+            <p>
+                He desarrollado e implementado sistemas ERP completos, plataformas de comunicación masiva, 
+                extractores de datos, sistemas de trazabilidad y aplicaciones web complejas para empresas líderes 
+                en Argentina, mejorando significativamente sus procesos operativos y medios de comunicación. Mi 
+                formación en diseño me permite crear interfaces intuitivas y atractivas, mientras que mi experiencia 
+                técnica asegura sistemas robustos y escalables.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">16+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Sistemas Completos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100K+</div>
+                <div class="stat-label">Mensajes/Mes Procesados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Mejora de Eficiencia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+        <h2 class="section-title">Experiencia Profesional</h2>
+        <p class="section-subtitle">Una trayectoria de evolución constante y crecimiento profesional</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">2009 - Presente</div>
+                    <h3>Desarrollador Full Stack & DevOps</h3>
+                    <h4>ideas DevOps</h4>
+                    <p><strong>Evolución Profesional:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 2;">
+                        <li><strong>2009-2015:</strong> Especialización en diseño web y marketing online, desarrollando 
+                            sitios web responsivos, campañas de marketing digital y optimización SEO.</li>
+                        <li><strong>2015-2020:</strong> Transición hacia desarrollo full stack, implementando sistemas 
+                            web complejos con integraciones de APIs, bases de datos y automatizaciones.</li>
+                        <li><strong>2020-Presente:</strong> Especialización en desarrollo de sistemas empresariales, 
+                            DevOps, contenedorización Docker y colaboración con IA para desarrollo acelerado.</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Logros Principales:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 2;">
+                        <li>Desarrollo e implementación de <strong>más de 15 sistemas completos</strong> en producción 
+                            para empresas de diversos sectores (energía, seguros, movilidad, agro, retail).</li>
+                        <li>Arquitectura y despliegue de sistemas complejos en <strong>entornos Docker</strong> con 
+                            alta disponibilidad y escalabilidad.</li>
+                        <li>Automatización de procesos críticos que han mejorado la eficiencia operativa de clientes 
+                            en más del 40%.</li>
+                        <li>Implementación de sistemas de comunicación masiva procesando <strong>más de 100,000 mensajes</strong> 
+                            mensuales.</li>
+                        <li>Desarrollo de sistemas ERP completos con módulos de facturación electrónica, trazabilidad 
+                            y gestión de inventario multi-almacén.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <p class="section-subtitle">Soluciones innovadoras que transforman negocios</p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Sendera v2</h4>
+                    <p>Sistema de Envío Masivo WhatsApp</p>
+                </div>
+                <div class="project-body">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Evolution API</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <p>Sistema completo de gestión y envío masivo de mensajes WhatsApp con integración de bases de datos, 
+                        gestión de contactos, plantillas, listas de envío, reportes y analytics.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>TrazaIA ERP</h4>
+                    <p>Sistema de Trazabilidad de Insumos Agrarios</p>
+                </div>
+                <div class="project-body">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">SENASA API</span>
+                        <span class="tech-tag">ARCA/AFIP</span>
+                        <span class="tech-tag">Multi-almacén</span>
+                    </div>
+                    <p>Sistema ERP completo para gestión de insumos agrícolas con trazabilidad integrada, control de lotes, 
+                        integración con SENASA y facturación electrónica.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Luber ERP</h4>
+                    <p>Sistema de Gestión para Lubrocentros</p>
+                </div>
+                <div class="project-body">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">ARCA/AFIP</span>
+                        <span class="tech-tag">WhatsApp API</span>
+                        <span class="tech-tag">PDF Generation</span>
+                    </div>
+                    <p>Sistema ERP completo para gestión integral de lubrocentros con módulos de facturación, inventario, 
+                        clientes, vehículos y servicios.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Ventura</h4>
+                    <p>Plataforma de Gestión de Viajes Turísticos</p>
+                </div>
+                <div class="project-body">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Evolution API</span>
+                    </div>
+                    <p>Plataforma completa para agencias de viajes con gestión de viajes emisivos y receptivos, CRM de clientes, 
+                        sistema de facturación y comunicación automatizada.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Mailsink-shell</h4>
+                    <p>Sistema Web de Migración de Correos</p>
+                </div>
+                <div class="project-body">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">imapsync</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">PayPal</span>
+                    </div>
+                    <p>Sistema web completo para migración de correos electrónicos entre cualquier tipo de cuentas usando 
+                        interfaz web moderna con sistema de suscripciones.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h3>Implementaciones y Gestión de Sistemas Open Source</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">ERP & Gestión</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Odoo, Typebot</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Automatización</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">n8n, Chatwoot, Evolution API</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">E-commerce & CMS</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">WordPress, PrestaShop</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Paneles de Control</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">EasyPanel, CloudPanel, aaPanel, cPanel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">Habilidades Técnicas</h2>
+        <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>Lenguajes & Frameworks</h4>
+                <ul>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Node.js & Express.js</li>
+                    <li>Python (Flask, FastAPI)</li>
+                    <li>HTML5 & CSS3</li>
+                    <li>Bash Scripting</li>
+                    <li>JSON & APIs REST</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h4>Bases de Datos</h4>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>SQLite</li>
+                    <li>MySQL</li>
+                    <li>MongoDB</li>
+                    <li>Diseño de esquemas</li>
+                    <li>Optimización de queries</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h4>DevOps & Infraestructura</h4>
+                <ul>
+                    <li>Docker & Docker Compose</li>
+                    <li>Nginx (proxy reverso)</li>
+                    <li>Supervisor</li>
+                    <li>Despliegue en producción</li>
+                    <li>Configuración de servidores</li>
+                    <li>Scripts de automatización</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h4>Diseño & UI/UX</h4>
+                <ul>
+                    <li>Diseño Gráfico Publicitario</li>
+                    <li>Diseño de Interfaces (UI)</li>
+                    <li>Experiencia de Usuario (UX)</li>
+                    <li>Prototipado y Wireframing</li>
+                    <li>Diseño Responsive</li>
+                    <li>Usabilidad Web</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h4>Integraciones & APIs</h4>
+                <ul>
+                    <li>Evolution API (WhatsApp)</li>
+                    <li>ARCA/AFIP</li>
+                    <li>SENASA API</li>
+                    <li>MercadoPago & PayPal</li>
+                    <li>APIs REST & WebSocket</li>
+                    <li>NoCodeDB</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h4>Herramientas & Metodologías</h4>
+                <ul>
+                    <li>Testing & Depuración</li>
+                    <li>Control de versiones (Git)</li>
+                    <li>IA Colaborativa</li>
+                    <li>Automatización de procesos</li>
+                    <li>Resolución de problemas</li>
+                    <li>Documentación técnica</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="fade-in">
+        <h2 class="section-title">Clientes & Empresas</h2>
+        <p class="section-subtitle">Empresas líderes que confían en mis servicios</p>
+
+        <div class="clients-grid">
+            <div class="client-card">
+                <h4>Taker SA</h4>
+                <p>Desarrollo e implementación de sistemas de gestión y comunicación masiva</p>
+            </div>
+            <div class="client-card">
+                <h4>Oeste Argentino SA</h4>
+                <p>Implementación de sistemas de gestión y comunicación</p>
+            </div>
+            <div class="client-card">
+                <h4>Sumpetrol SA</h4>
+                <p>Desarrollo de sistemas especializados para el sector energético</p>
+            </div>
+            <div class="client-card">
+                <h4>Del Campo Seguros</h4>
+                <p>Implementación de sistemas de gestión y comunicación</p>
+            </div>
+            <div class="client-card">
+                <h4>Soluciones de Movilidad SRL</h4>
+                <p>Desarrollo de sistemas especializados en gestión de movilidad</p>
+            </div>
+            <div class="client-card">
+                <h4>SMDA SaS</h4>
+                <p>Implementación de sistemas de gestión empresarial</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="fade-in">
+        <h2 class="section-title">Formación Académica</h2>
+        <p class="section-subtitle">Base sólida y aprendizaje continuo</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">Finalizada</div>
+                    <h3>Tecnicatura en Diseño Gráfico Publicitario</h3>
+                    <p>Formación técnica completa en diseño gráfico publicitario, proporcionando una base sólida en 
+                    comunicación visual, composición, tipografía, identidad corporativa y diseño para medios impresos 
+                    y digitales.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">2 años de estudios</div>
+                    <h3>Diseño UI/UX - Especialización</h3>
+                    <p>Formación especializada en diseño de interfaces de usuario (UI) y experiencia de usuario (UX), 
+                    enfocada en la creación de productos digitales intuitivos, atractivos y funcionales.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">UTN Chaco</div>
+                    <h3>Certificación en Testing de Software</h3>
+                    <p>Certificación profesional en testing de software, validando habilidades en pruebas de software, 
+                    aseguramiento de calidad, metodologías de testing y gestión de defectos.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">Invitado como docente</div>
+                    <h3>Docencia & Conferencias</h3>
+                    <p>Reconocido como experto e invitado a impartir clases y conferencias sobre Marketing, Desarrollo 
+                    e Inteligencia Artificial en:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>ITU San Rafael</strong></li>
+                        <li><strong>Ministerio de Desarrollo de Mendoza</strong></li>
+                        <li><strong>Polo TIC Mendoza</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <div class="cta-section">
+            <h2 class="section-title" style="color: var(--bg-white);">¿Trabajamos Juntos?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Estoy disponible para nuevos proyectos y colaboraciones. 
+                Hablemos sobre cómo puedo ayudar a transformar tus ideas en realidad.
+            </p>
+            <div class="hero-contact">
+                <a href="mailto:devops@ideasdevops.com">📧 devops@ideasdevops.com</a>
+                <a href="tel:+5492613151000">📱 +54 9 261 315-1000</a>
+                <a href="https://www.ideasdevops.com" target="_blank">🌐 ideasdevops.com</a>
+            </div>
+            <div class="cta-buttons">
+                <a href="mailto:devops@ideasdevops.com" class="btn btn-primary">Enviar Email</a>
+                <a href="https://www.ideasdevops.com" target="_blank" class="btn btn-outline">Visitar Web</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Franco Sponton - ideas DevOps. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>

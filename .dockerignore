@@ -1,0 +1,7 @@
+# Archivos a ignorar en el build de Docker
+README.md
+DEPLOY.md
+.git
+.gitignore
+*.md
+
