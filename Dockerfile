@@ -8,8 +8,10 @@ LABEL maintainer="ideas DevOps"
 LABEL version="1.0.0"
 LABEL description="CV Profesional Online - Franco Sponton"
 
-# Copiar el archivo HTML al directorio de nginx
-COPY CV_Profesional_Franco_Sponton_2025.html /usr/share/nginx/html/index.html
+# Copiar archivos estáticos
+COPY index.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/
+COPY app.js /usr/share/nginx/html/
 
 # Configuración de nginx para SPA (opcional, para rutas con hash)
 RUN echo 'server { \

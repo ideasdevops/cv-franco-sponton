@@ -39,9 +39,12 @@ Ver [DEPLOY.md](DEPLOY.md) para más opciones.
 
 ```
 cv-franco/
-├── CV_Profesional_Franco_Sponton_2025.html  # CV principal
+├── index.html                                 # CV principal (HTML)
+├── style.css                                  # Estilos CSS
+├── app.js                                     # JavaScript
 ├── Dockerfile                                 # Para despliegue Docker
 ├── docker-compose.yml                        # Compose para Docker
+├── deploy.sh                                 # Script de despliegue
 ├── DEPLOY.md                                  # Guía de despliegue
 └── README.md                                  # Este archivo
 ```
